@@ -1,0 +1,16 @@
+<div class="threecol">
+    <h3>Stripe</h3>
+    <p>Set the text you would like to display on your customer credit card statements.</p>
+</div>
+<div class="ninecol last">
+    <fieldset class="widget widget-content">
+        <div class="row">
+            <div class="twelvecol">
+                <div class="form-group form-last">
+                    <%= f.label 'Statement Descriptor' %>
+                    <%= f.text_field :stripe_statement_descriptor, :class => 'form-control' %>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
