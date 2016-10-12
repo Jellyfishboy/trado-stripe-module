@@ -45,7 +45,7 @@ You can then modify the **Stripe Statement Descriptor** in store settings to cus
 
 ## Versioning
 
-Trado PayPal module follows Semantic Versioning 2.0 as defined at
+Trado Stripe module follows Semantic Versioning 2.0 as defined at
 <http://semver.org>.
 
 ## How to contribute
