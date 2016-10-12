@@ -40,7 +40,8 @@ Restart the main application server:
 foreman start -f Procfile.dev
 ```
 
-You can then modify the Stripe Statement Descriptor in store settings to customise your customers credit card statement information.
+
+You can then modify the **Stripe Statement Descriptor** in store settings to customise your customers credit card statement information.
 
 ## Versioning
 
