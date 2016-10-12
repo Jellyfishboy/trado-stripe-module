@@ -5,7 +5,42 @@ Module for Stripe payment functionality in the Trado Ecommerce platform. If you 
 
 ## Installation
 
-Coming soon...
+Add module to your Gemfile:
+
+```ruby
+gem 'trado_stripe_module'
+```
+
+Then run bundle to install the Gem:
+
+```sh
+bundle install
+```
+
+Set up an initializer file with your Stripe API keys:
+*(You can sign up for a Stripe account [here](https://developer.paypal.com))*
+
+```ruby
+Rails.application.config.stripe.secret_key = "stripe_secret_key"
+Rails.application.config.stripe.publishable_key = "stripe_public_key"
+```
+e.g. *config/initializers/stripe.rb*. It would be a good idea to store sensitive data in *config/secrets.yml*.
+
+
+Now generate migrations, copy controllers and assign model concerns:
+
+```sh
+rails generate trado_stripe_module:install
+bundle exec rake db:migrate
+```
+
+Restart the main application server:
+
+```sh
+foreman start -f Procfile.dev
+```
+
+You can then modify the Stripe Statement Descriptor in store settings to customise your customers credit card statement information.
 
 ## Versioning
 
