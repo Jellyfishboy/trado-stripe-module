@@ -34,7 +34,7 @@ rails generate trado_stripe_module:install
 bundle exec rake db:migrate
 ```
 
-Add the Stripe JS files:
+Add the Stripe JS files to the theme application.js:
 
 ```js
 //= require trado-stripe

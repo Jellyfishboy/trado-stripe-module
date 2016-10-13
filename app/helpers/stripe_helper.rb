@@ -9,10 +9,10 @@ module StripeHelper
     end
 
     def stripe_application_layout 
-        render 'layout/_meta_tags', format: [:html]
+        render 'layout/meta_tags', format: [:html]
     end
 
     def stripe_store_setting_fields f
-        render 'admin/store_setting_fields', format: [:html]
+        render 'admin/store_setting_fields', format: [:html], f: f
     end
 end

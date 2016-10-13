@@ -14,7 +14,7 @@ module TradoStripeModule
             charge = Stripe::Charge.create(
                 amount: Store::Price.new(price: order.gross_amount, tax_type: 'net').singularize,
                 currency: Store.settings.currency_code,
-                customer: order.stripe_customer_token,
+                customer: order.stripe_customer_id,
                 description: "Order ID ##{order.id} | #{order.billing_address.full_name} | #{order.email}",
                 metadata: Hash[ *order.order_items.collect { |item| [ "order_item_#{item.id}", "#{item.product.name} - #{item.sku.full_sku}" ] }.flatten ]
             )
