@@ -16,7 +16,8 @@ module TradoStripeModule
                 currency: Store.settings.currency_code,
                 customer: order.stripe_customer_id,
                 description: "Order ID ##{order.id} | #{order.billing_address.full_name} | #{order.email}",
-                metadata: Hash[ *order.order_items.collect { |item| [ "order_item_#{item.id}", "#{item.product.name} - #{item.sku.full_sku}" ] }.flatten ]
+                metadata: Hash[ *order.order_items.collect { |item| [ "order_item_#{item.id}", "#{item.product.name} - #{item.sku.full_sku}" ] }.flatten ],
+                statement_descriptor: Store.settings.stripe_statement_descriptor
             )
             if charge.paid
                 TradoStripeModule::Striper.successful(charge, order)
