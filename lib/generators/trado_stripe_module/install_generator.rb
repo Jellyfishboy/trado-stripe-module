@@ -10,10 +10,6 @@ module TradoStripeModule
 				end
 			end
 
-			def copy_helper
-				template "helper.rb", "app/helpers/stripe_helper.rb"
-			end
-
 			def copy_controller
 				template "controller.rb", "app/controllers/carts/stripe_controller.rb"
 			end
