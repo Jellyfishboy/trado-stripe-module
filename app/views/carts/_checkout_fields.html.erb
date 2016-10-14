@@ -1,5 +1,6 @@
 <div class='stripe-form-wrapper'>
-      <%= f.radio_button(:payment_type, 'stripe', checked: true) %><%= image_tag('stripe.png', height: 50) %>
+      <%= f.radio_button(:payment_type, 'stripe', checked: true) %>
+      <%= image_tag('grouped-cards.png', height: 50) %>
 </div><br>
 <%= f.hidden_field :stripe_card_token %>
 <%= label_tag :stripe_card_number, "Credit Card Number" %>
