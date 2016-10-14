@@ -4,8 +4,8 @@ module StripeHelper
         render 'carts/checkout_fields', format: [:html], f: f
     end
 
-    def stripe_order_confirm_data order
-        render 'orders/confirm_data', format: [:html], order: order
+    def stripe_credit_card_data order
+        render 'orders/credit_card_data', format: [:html], order: order
     end
 
     def stripe_application_layout 

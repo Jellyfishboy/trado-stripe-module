@@ -12,7 +12,7 @@ module TradoStripeModule
 
                 define_method("stripe_customer") do
                     begin
-                        Stripe::Customer.retrieve(stripe_customer_id)
+                        @customer ||= Stripe::Customer.retrieve(stripe_customer_id)
                     rescue Stripe::InvalidRequestError
                         create_stripe_customer
                     end
