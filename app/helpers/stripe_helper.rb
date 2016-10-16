@@ -1,7 +1,7 @@
 module StripeHelper
 
     def stripe_checkout_fields f
-        render 'carts/checkout_fields', format: [:html], f: f
+        render 'carts/stripe_credit_card_form', format: [:html], f: f
     end
 
     def stripe_credit_card_data order
