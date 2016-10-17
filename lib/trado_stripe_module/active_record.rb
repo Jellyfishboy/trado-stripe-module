@@ -27,7 +27,12 @@ module TradoStripeModule
                 end
 
                 define_method("create_stripe_card") do
-                    stripe_customer.sources.create(source: stripe_card_token)
+                    card = stripe_customer.sources.create(source: stripe_card_token)
+                    self.update(
+                        stripe_card_last4: card.last4,
+                        stripe_card_brand: card.brand,
+                        stripe_card_expiry_date: "#{card.exp_month}/#{card.exp_year}"
+                    )
                 end
 
                 define_method("remove_redundant_stripe_cards") do
