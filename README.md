@@ -40,6 +40,12 @@ Add the Stripe JS files to the theme application.js:
 //= require trado-stripe
 ```
 
+You can also customise the HTML for your credit card form and data in checkout:
+
+```sh
+rails generate trado_stripe_module:views
+```
+
 Restart the main application server:
 
 ```sh
