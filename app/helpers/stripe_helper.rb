@@ -9,7 +9,7 @@ module StripeHelper
     def stripe_credit_card_data order
         render "themes/#{Store.settings.theme.name}/orders/credit_card_data", format: [:html], order: order
     rescue ActionView::MissingTemplate
-        render 'orders/credit_card_data', format: [:html], f: f
+        render 'orders/credit_card_data', format: [:html], order: order
     end
 
     def stripe_application_layout 
@@ -17,7 +17,7 @@ module StripeHelper
     end
 
     def stripe_admin_credit_card_data order
-        render 'admin/order_credit_card_data', format: [:html], f: f
+        render 'admin/order_credit_card_data', format: [:html], order: order
     end
 
     def stripe_store_setting_fields f
