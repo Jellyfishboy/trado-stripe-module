@@ -21,6 +21,7 @@ module TradoStripeModule
             )
             if charge.paid
                 TradoStripeModule::Striper.successful(charge, order)
+                TradoStripeModule::Striper.assign_card_data(order)
                 Payatron4000.destroy_cart(session)
                 Payatron4000.decommission_order(order)
                 order.reload
@@ -74,6 +75,18 @@ module TradoStripeModule
                               :error_code                 => error[:code].to_i
             ).save(validate: false)
             Payatron4000.increment_product_order_count(order.products)
+        end
+
+        # Assign the card data used for the order
+        #
+        # @param order [Object]
+        def self.assign_card_data order
+          default_card = order.default_card
+          order.update(
+            stripe_card_last4: default_card.last4,
+            stripe_card_brand: default_card.brand,
+            stripe_card_expiry_date: "#{default_card.exp_month}/#{default_card.exp_year}"
+          )
         end
     end
 end

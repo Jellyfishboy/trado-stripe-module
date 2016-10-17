@@ -4,7 +4,7 @@ module TradoStripeModule
 
         module ClassMethods
             def has_order_stripe
-                attr_accessible :stripe_customer_id, :stripe_card_token
+                attr_accessible :stripe_customer_id, :stripe_card_token, :stripe_card_last4, :stripe_card_brand, :stripe_card_expiry_date
                 attr_accessor :stripe_card_token
 
                 after_commit :create_stripe_customer,                           on: :create, if: :no_stripe_customer_id?

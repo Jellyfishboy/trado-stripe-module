@@ -3,7 +3,7 @@ class AddStripeAttributes < ActiveRecord::Migration
         add_column :orders, :stripe_customer_id, :string
         add_column :orders, :stripe_card_last4, :string
         add_column :orders, :stripe_card_brand, :string
-        add_column :orders, :stripe_expiry_date, :string
+        add_column :orders, :stripe_card_expiry_date, :string
         add_column :transactions, :stripe_charge_id, :string
         add_column :store_settings, :stripe_statement_descriptor, :string
     end
