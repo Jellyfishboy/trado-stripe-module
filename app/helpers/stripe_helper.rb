@@ -9,11 +9,15 @@ module StripeHelper
     def stripe_credit_card_data order
         render "themes/#{Store.settings.theme.name}/orders/credit_card_data", format: [:html], order: order
     rescue ActionView::MissingTemplate
-        render 'carts/credit_card_data', format: [:html], f: f
+        render 'orders/credit_card_data', format: [:html], f: f
     end
 
     def stripe_application_layout 
         render 'layout/meta_tags', format: [:html]
+    end
+
+    def stripe_admin_credit_card_data order
+        render 'admin/order_credit_card_data', format: [:html], f: f
     end
 
     def stripe_store_setting_fields f

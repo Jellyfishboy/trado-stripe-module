@@ -1,0 +1,7 @@
+<div id="stripe-card-data">
+    <%= image_tag "#{order.default_card.brand.parameterize}.png" %>
+    <ul>
+        <li><b>Card Number</b>: **** **** **** <%= order.default_card.last4 %></li>
+        <li><b>Expiry Date</b>: <%= order.default_card.exp_month %>/<%= order.default_card.exp_year %></li>
+    </ul>
+</div>
