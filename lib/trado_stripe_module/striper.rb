@@ -25,7 +25,7 @@ module TradoStripeModule
                 Payatron4000.decommission_order(order)
                 order.reload
                 Mailatron4000::Orders.confirmation_email(order)
-                return Rails.application.routes.url_helpers.success_order_url(order, host: Trado::Application.config.action_mailer.default_url_options[:host])
+                return Rails.application.routes.url_helpers.success_orders_url(host: Trado::Application.config.action_mailer.default_url_options[:host])
             end
         rescue Stripe::CardError => e
             body = e.json_body
@@ -33,7 +33,7 @@ module TradoStripeModule
             TradoStripeModule::Striper.failed(err, order)
             order.reload
             Mailatron4000::Orders.confirmation_email(order)
-            return Rails.application.routes.url_helpers.failed_order_url(order, host: Trado::Application.config.action_mailer.default_url_options[:host])
+            return Rails.application.routes.url_helpers.failed_orders_url(host: Trado::Application.config.action_mailer.default_url_options[:host])
         end
 
         # Upon successfully completing an order with a Stripe payment option a new transaction record is created, stock is updated for the relevant SKU
@@ -53,6 +53,7 @@ module TradoStripeModule
             ).save(validate: false)
             Payatron4000.update_stock(order)
             Payatron4000.increment_product_order_count(order.products)
+            Payatron4000.set_order_id_session(order.id, 'success')
         end
 
         
@@ -74,6 +75,7 @@ module TradoStripeModule
                               :error_code                 => error[:code].to_i
             ).save(validate: false)
             Payatron4000.increment_product_order_count(order.products)
+            Payatron4000.set_order_id_session(order.id, 'failed')
         end
     end
 end
