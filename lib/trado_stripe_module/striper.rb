@@ -53,7 +53,6 @@ module TradoStripeModule
             ).save(validate: false)
             Payatron4000.update_stock(order)
             Payatron4000.increment_product_order_count(order.products)
-            Payatron4000.set_order_id_session(order.id, 'success')
         end
 
         
@@ -75,7 +74,6 @@ module TradoStripeModule
                               :error_code                 => error[:code].to_i
             ).save(validate: false)
             Payatron4000.increment_product_order_count(order.products)
-            Payatron4000.set_order_id_session(order.id, 'failed')
         end
     end
 end

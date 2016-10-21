@@ -9,6 +9,7 @@ class TradoStripeModule::StripeController < ApplicationController
         set_browser_data
         @order.attributes = params[:order]
         if @order.save
+            set_order_id_session
             @order.remove_redundant_stripe_cards
             @order.create_stripe_card
             @order.calculate(current_cart, Store.tax_rate)
