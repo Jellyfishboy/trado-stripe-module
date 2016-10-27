@@ -10,7 +10,6 @@ order = {
     $('.process_order').submit(function() {
       var $form = $(this);
       $('input[type=submit]').attr('disabled', true);
-      // Move to redlight theme
       $('.stripe-error, .alert-stripe-checkout, .stripe-error-terms').remove();
       $('#stripe_card_error').html('');
       $('.field_with_errors').each(function()
@@ -18,7 +17,6 @@ order = {
         $(this).find('input').unwrap();
         $(this).find('select').unwrap();
       });
-      // end
       if ($('#stripe_card_number').length) {
         order.validateForm($form);
         return false;
@@ -47,8 +45,7 @@ order = {
       {
         $(this).wrap('<div class="field_with_errors"></div>');
       });
-      $('.checkout-body').prepend('<div class="errors stripe-error"><p>Please complete all of the required fields</p></div>');
-      $('.checkout').prepend('<div class="alert alert-orange alert-stripe-checkout"><i class="icon-blocked"></i>An error ocurred with your order. Please try again.</div>');
+      stripeCheckoutErrors();
       $('input[type=submit]').attr('disabled', false);
       $('#checkoutLoadingModal').modal('hide');
     }
@@ -79,18 +76,15 @@ order = {
     $('input[type=submit]').attr('disabled', false);
     $('#checkoutLoadingModal').modal('hide');
 
-    // Move to redlight theme
     $.each(errorKeys, function(index, value)
     {
       var $input = $('#' + value);
       if (value === 'terms')
       {
-        $('<span class="error-explanation stripe-error-terms">You must tick the box in order to place your order.</span>').insertBefore('input[type="hidden"][name="order[terms]"]');
+        stripeTermsValidationMessage();
       }
       $input.wrap('<div class="field_with_errors"></div>')
     });
-    $('.checkout-body').prepend('<div class="errors stripe-error"><p>Please complete all of the required fields</p></div>');
-    $('.checkout').prepend('<div class="alert alert-orange alert-stripe-checkout"><i class="icon-blocked"></i>An error ocurred with your order. Please try again.</div>');
-    // end
+    stripeCheckoutErrors();
   }
 };
