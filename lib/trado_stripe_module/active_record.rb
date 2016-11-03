@@ -71,6 +71,8 @@ module TradoStripeModule
 
             def has_store_setting_stripe
                 attr_accessible :stripe_statement_descriptor
+
+                validates :stripe_statement_descriptor,                     length: { maximum: 22, message: :too_long }, format: { with: /\A[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*\z/}
             end
         end
     end
