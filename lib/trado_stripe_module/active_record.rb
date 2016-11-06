@@ -19,7 +19,7 @@ module TradoStripeModule
                 end
 
                 define_method("stripe_cards") do
-                    stripe_customer.sources.all(:object => "card")['data']
+                    stripe_customer.sources.all(object: "card")['data']
                 end
 
                 define_method("default_card") do

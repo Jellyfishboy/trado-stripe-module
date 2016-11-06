@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
     s.add_dependency "rails", "~> 4.2"
     s.add_dependency "stripe", "~> 1.55"
     s.add_dependency "stripe-rails", "~> 0.3"
+    s.add_dependency "money", "~> 6.7"
 end

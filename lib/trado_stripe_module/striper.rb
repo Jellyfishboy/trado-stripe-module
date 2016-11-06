@@ -17,7 +17,8 @@ module TradoStripeModule
                 customer: order.stripe_customer_id,
                 description: "Order ID ##{order.id} | #{order.billing_address.full_name} | #{order.email}",
                 metadata: Hash[ *order.order_items.collect { |item| [ "order_item_#{item.id}", "#{item.product.name} - #{item.sku.full_sku}" ] }.flatten ],
-                statement_descriptor: Store.settings.stripe_statement_descriptor
+                statement_descriptor: Store.settings.stripe_statement_descriptor,
+                expand: ['balance_transaction']
             )
             if charge.paid
                 TradoStripeModule::Striper.successful(charge, order)
@@ -41,7 +42,7 @@ module TradoStripeModule
         # @param charge [Object]
         # @param order [Object]
         def self.successful charge, order
-            Transaction.new(  :fee                      => charge.application_fee,  
+            Transaction.new(  :fee                      => TradoStripeModule::Striper.format_currency(charge),  
                               :order_id                 => order.id, 
                               :payment_status           => 'completed', 
                               :transaction_type         => 'Credit', 
@@ -74,6 +75,10 @@ module TradoStripeModule
                               :error_code                 => error[:code].to_i
             ).save(validate: false)
             Payatron4000.increment_product_order_count(order.products)
+        end
+
+        def self.format_currency charge
+          Money.new(charge.balance_transaction.fee, charge.currency.upcase)
         end
     end
 end
