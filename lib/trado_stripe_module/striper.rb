@@ -1,3 +1,4 @@
+require 'money'
 require_dependency 'lib/payatron_4000'
 
 module TradoStripeModule
