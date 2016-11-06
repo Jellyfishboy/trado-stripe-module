@@ -1,6 +1,9 @@
 ![alt text](http://cdn0.trado.io/trado-promo/assets/img/cropped.png "Trado")
 
 # Stripe Module
+
+[![Gem Version](https://badge.fury.io/rb/trado_stripe_module.svg)](https://badge.fury.io/rb/trado_stripe_module)
+
 Module for Stripe payment functionality in the Trado Ecommerce platform. If you would like to get started using the Trado Ecommerce platform, head on over to the [Official site](http://www.trado.io/?utm_source=github&utm_medium=website&utm_campaign=trado)!
 
 [Release notes](http://release.tomdallimore.com/projects/trado-stripe)
