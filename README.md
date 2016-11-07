@@ -1,4 +1,4 @@
-![alt text](http://cdn0.trado.io/trado-promo/assets/img/cropped.png "Trado")
+![alt text](http://cdn2.tomdallimore.com/assets/stripe-link-img.png "Trado")
 
 # Stripe Module
 
@@ -7,6 +7,9 @@
 Module for Stripe payment functionality in the Trado Ecommerce platform. If you would like to get started using the Trado Ecommerce platform, head on over to the [Official site](http://www.trado.io/?utm_source=github&utm_medium=website&utm_campaign=trado)!
 
 [Release notes](http://release.tomdallimore.com/projects/trado-stripe)
+
+[Installation Video](https://www.youtube.com/watch?v=GOKWM7VWum0)
+
 
 ## Installation
 
