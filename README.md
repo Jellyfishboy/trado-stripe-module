@@ -1,4 +1,4 @@
-![alt text](http://cdn2.tomdallimore.com/assets/stripe-link-img.png "Trado")
+![alt text](http://cdn2.tomdallimore.com/assets/stripe-link-img.png "Trado Stripe")
 
 # Stripe Payment
 
