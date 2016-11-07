@@ -1,6 +1,6 @@
 ![alt text](http://cdn2.tomdallimore.com/assets/stripe-link-img.png "Trado")
 
-# Stripe Module
+# Stripe payment
 
 [![Gem Version](https://badge.fury.io/rb/trado_stripe_module.svg)](https://badge.fury.io/rb/trado_stripe_module)
 
